@@ -52,6 +52,7 @@
         <section id="practica" class="seccion-destacada">
             <h2>Laboratorio Creativo</h2>
             <p>Conecta con la frecuencia y experimenta.</p>
+            <botton onclick="playTone()">TocarNota</botton>
         </section>
     </main>
 
@@ -59,5 +60,16 @@
         <p>&copy; 2026 Eco Creativo</p>
     </footer>
 
+    <script>
+      function playTone() {
+        const ctx = new (window.AudioContext || window.webkitAudioContext)();
+        const osc = ctx.createOscillator();
+        osc.type = 'sine';
+        osc.frequency.setValueAtTime(440, ctx.currentTime);
+        osc.connect(ctx.destination);
+        osc.start();
+        osc.stop(ctx.currentTime + 0.5);
+      }
+    </script>
 </body>
 </html>
