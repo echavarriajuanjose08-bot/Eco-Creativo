@@ -1,0 +1,101 @@
+:root {
+    --bg-deep: #121214;
+    --card-surface: #1a1a1e;
+    --text-muted: #a1a1aa;
+    --text-main: #f4f4f5;
+    --accent-copper: #b45309;
+}
+
+body {
+    background-color: var(--bg-deep);
+    color: var(--text-main);
+    font-family: 'Inter', system-ui, sans-serif;
+    line-height: 1.6;
+    margin: 0;
+}
+
+header {
+    background-color: var(--card-surface);
+    padding: 1.5rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #27272a;
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: 700;
+    letter-spacing: -1px;
+    color: var(--text-main);
+}
+
+nav ul {
+    display: flex;
+    list-style: none;
+}
+
+nav ul li {
+    margin-left: 20px;
+}
+
+nav ul li a {
+    color: var(--text-muted);
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+nav ul li a:hover {
+    color: var(--text-main);
+}
+
+main {
+    padding: 4rem 2rem;
+}
+
+.hero {
+    text-align: center;
+    margin-bottom: 4rem;
+}
+
+.hero h2 {
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.seccion-generos h2 {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.grid-generos {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+}
+
+.tarjeta-genero {
+    background-color: var(--card-surface);
+    padding: 2rem;
+    border-radius: 8px;
+    border: 1px solid #27272a;
+    transition: border-color 0.3s;
+}
+
+.tarjeta-genero:hover {
+    border-color: var(--accent-copper);
+}
+
+.seccion-destacada {
+    background-color: var(--card-surface);
+    padding: 4rem 2rem;
+    text-align: border-top: 1px solid #27272a;
+    margin-top: 4rem;
+}
+
+footer {
+    text-align: center;
+    padding: 2rem;
+    color: var(--text-muted);
+    font-size: 0.9rem;
+}
