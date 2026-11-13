@@ -33,6 +33,8 @@ header {
 nav ul {
     display: flex;
     list-style: none;
+    padding: 0;
+    margin: 0;
 }
 
 nav ul li {
@@ -79,17 +81,22 @@ main {
     padding: 2rem;
     border-radius: 8px;
     border: 1px solid #27272a;
-    transition: border-color 0.3s;
+    /* Añadimos sombra sutil y transición fluida para dar relieve */
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.2), 0 2px 4px -1px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 .tarjeta-genero:hover {
     border-color: var(--accent-copper);
+    /* Efecto de elevación al pasar el cursor */
+    transform: translateY(-4px);
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3), 0 4px 6px -2px rgba(0, 0, 0, 0.15);
 }
 
 .seccion-destacada {
     background-color: var(--card-surface);
     padding: 4rem 2rem;
-    text-align: border-top: 1px solid #27272a;
+    border-top: 1px solid #27272a;
     margin-top: 4rem;
 }
 
