@@ -3,73 +3,58 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Eco Creativo - El Arte de la Música</title>
+    <title>Eco Creativo - Exploración Sonora</title>
     <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
-
     <header class="navbar">
-        <h1 class="logo">Eco Creativo</h1>
-        <nav>
-            <ul>
-                <li><a href="#inicio">Inicio</a></li>
-                <li><a href="#generos">Explorar</a></li>
-                <li><a href="#practica">Laboratorio</a></li>
-            </ul>
+        <div class="logo">ECO<span>_CREATIVO</span></div>
+        <button class="menu-toggle" id="menu-toggle" aria-label="Abrir menú">☰</button>
+        <nav class="nav-links" id="nav-links">
+            <a href="index.html" class="active">Inicio</a>
+            <a href="clasica.html">Clásica</a>
+            <a href="eletronica.html">Electrónica</a>
+            <a href="jazz.html">Jazz</a>
         </nav>
     </header>
 
     <main>
-        <section id="inicio" class="hero">
-            <h2>El Arte del Sonido</h2>
-            <p>Un espacio sutil y moderno para vivir la música.</p>
+        <section class="hero">
+            <div class="badge">SISTEMA DE AUDIO Y ARTE // v2.0</div>
+            <h1>El Arte del Sonido en <span class="neon-text">Alta Definición</span></h1>
+            <p>Explora las dimensiones acústicas, digitales e improvisadas de la música a través de una experiencia visual inmersiva.</p>
+            <a href="#generos" class="btn-primary">Explorar Géneros</a>
         </section>
 
-        <section id="generos" class="seccion-generos">
-            <h2>Explora el Arte Sonoro</h2>
-            <div class="grid-generos">
-                <a href="clasica.html" class="tarjeta-genero">
-                    <article>
-                        <h3>Música Clásica</h3>
-                        <p>Armonía y complejidad acústica.</p>
-                    </article>
-                </a>
-                <a href="jazz.html" class="tarjeta-genero">
-                    <article>
-                        <h3>Jazz</h3>
-                        <p>Improvisación y libertad rítmica.</p>
-                    </article>
-                </a>
-                <a href="eletronica.html" class="tarjeta-genero">
-                    <article>
-                        <h3>Electrónica</h3>
-                        <p>Vanguardia y síntesis de sonido.</p>
-                    </article>
-                </a>
-            </div>
-        </section>
+        <section id="generos" class="grid-container">
+            <article class="glass-card visible">
+                <div class="card-tag">01 // ACÚSTICA</div>
+                <h2>Música Clásica</h2>
+                <p>Armonía, complejidad estructural y tradición que trasciende épocas y conmueve el alma.</p>
+                <a href="clasica.html" class="btn-card">Ingresar al módulo →</a>
+            </article>
 
-        <section id="practica" class="seccion-destacada">
-            <h2>Laboratorio Creativo</h2>
-            <p>Conecta con la frecuencia y experimenta.</p>
-            <buton onclick="playTone()">TocarNota</buton>
+            <article class="glass-card visible">
+                <div class="card-tag">02 // SÍNTESIS</div>
+                <h2>Música Electrónica</h2>
+                <p>Paisajes sonoros futuristas, sintetizadores y ondas digitales llenas de energía tecnológica.</p>
+                <a href="eletronica.html" class="btn-card">Ingresar al módulo →</a>
+            </article>
+
+            <article class="glass-card visible">
+                <div class="card-tag">03 // IMPROVISACIÓN</div>
+                <h2>Jazz</h2>
+                <p>Atmósfera nocturna, libertad rítmica y la esencia pura de la expresión musical.</p>
+                <a href="jazz.html" class="btn-card">Ingresar al módulo →</a>
+            </article>
         </section>
     </main>
 
     <footer>
-        <p>&copy; 2026 Eco Creativo</p>
+        <p>ECO CREATIVO © 2026 // Interfaz de Exploración Musical</p>
     </footer>
 
-    <script>
-      function playTone() {
-        const ctx = new (window.AudioContext || window.webkitAudioContext)();
-        const osc = ctx.createOscillator();
-        osc.type = 'sine';
-        osc.frequency.setValueAtTime(440, ctx.currentTime);
-        osc.connect(ctx.destination);
-        osc.start();
-        osc.stop(ctx.currentTime + 0.5);
-      }
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>
