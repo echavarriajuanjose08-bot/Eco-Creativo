@@ -1,108 +1,243 @@
 :root {
-    --bg-deep: #121214;
-    --card-surface: #1a1a1e;
-    --text-muted: #a1a1aa;
-    --text-main: #f4f4f5;
-    --accent-copper: #b45309;
+    --bg-dark: #0a0f1d;
+    --glass-bg: rgba(255, 255, 255, 0.03);
+    --glass-border: rgba(0, 240, 255, 0.18);
+    --neon-cyan: #00f0ff;
+    --neon-blue: #3b82f6;
+    --text-main: #f8fafc;
+    --text-muted: #94a3b8;
+    --font-sans: 'Inter', sans-serif;
+    --font-mono: 'JetBrains Mono', monospace;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
 body {
-    background-color: var(--bg-deep);
+    background-color: var(--bg-dark);
+    background-image: 
+        radial-gradient(circle at 15% 20%, rgba(0, 240, 255, 0.08) 0%, transparent 40%),
+        radial-gradient(circle at 85% 80%, rgba(59, 130, 246, 0.08) 0%, transparent 40%);
     color: var(--text-main);
-    font-family: 'Inter', system-ui, sans-serif;
+    font-family: var(--font-sans);
     line-height: 1.6;
-    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
 }
 
-header {
-    background-color: var(--card-surface);
-    padding: 1.5rem 2rem;
+/* Header y Navegación Fija */
+.navbar {
+    position: sticky;
+    top: 0;
+    z-index: 100;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    border-bottom: 1px solid #27272a;
+    padding: 1.2rem 5%;
+    background: rgba(10, 15, 29, 0.8);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--glass-border);
 }
 
 .logo {
-    font-size: 1.5rem;
+    font-family: var(--font-mono);
     font-weight: 700;
-    letter-spacing: -1px;
-    color: var(--text-main);
+    font-size: 1.3rem;
+    letter-spacing: 1px;
 }
 
-nav ul {
+.logo span {
+    color: var(--neon-cyan);
+}
+
+.nav-links {
     display: flex;
-    list-style: none;
-    padding: 0;
-    margin: 0;
-}
-
-nav ul li {
-    margin-left: 20px;
-}
-
-nav ul li a {
-    color: var(--text-muted);
-    text-decoration: none;
-    transition: color 0.3s;
-}
-
-nav ul li a:hover {
-    color: var(--text-main);
-}
-
-main {
-    padding: 4rem 2rem;
-}
-
-.hero {
-    text-align: center;
-    margin-bottom: 4rem;
-}
-
-.hero h2 {
-    font-size: 2.5rem;
-    margin-bottom: 0.5rem;
-}
-
-.seccion-generos h2 {
-    text-align: center;
-    margin-bottom: 2rem;
-}
-
-.grid-generos {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 2rem;
 }
 
-.tarjeta-genero {
-    background-color: var(--card-surface);
-    padding: 2rem;
+.nav-links a {
+    color: var(--text-muted);
+    text-decoration: none;
+    font-size: 0.95rem;
+    transition: color 0.3s ease, text-shadow 0.3s ease;
+}
+
+.nav-links a:hover, .nav-links a.active {
+    color: var(--neon-cyan);
+    text-shadow: 0 0 10px rgba(0, 240, 255, 0.5);
+}
+
+.menu-toggle {
+    display: none;
+    background: none;
+    border: 1px solid var(--glass-border);
+    color: var(--neon-cyan);
+    font-size: 1.5rem;
+    padding: 0.2rem 0.6rem;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+/* Contenido Principal */
+main {
+    flex: 1;
+    width: 90%;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 3rem 0;
+}
+
+/* Sección Hero */
+.hero {
+    text-align: center;
+    padding: 3rem 1rem 4rem;
+}
+
+.badge {
+    display: inline-block;
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    color: var(--neon-cyan);
+    border: 1px solid var(--glass-border);
+    background: var(--glass-bg);
+    padding: 0.4rem 1rem;
+    border-radius: 50px;
+    margin-bottom: 1.5rem;
+}
+
+.hero h1 {
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    font-weight: 600;
+    margin-bottom: 1rem;
+}
+
+.neon-text {
+    color: var(--neon-cyan);
+    text-shadow: 0 0 20px rgba(0, 240, 255, 0.4);
+}
+
+.hero p {
+    color: var(--text-muted);
+    max-width: 600px;
+    margin: 0 auto 2rem;
+    font-size: 1.1rem;
+}
+
+.btn-primary {
+    display: inline-block;
+    padding: 0.8rem 2rem;
+    background: transparent;
+    color: var(--neon-cyan);
+    border: 1px solid var(--neon-cyan);
     border-radius: 8px;
-    border: 1px solid #27272a;
-    /* Añadimos sombra sutil y transición fluida para dar relieve */
-    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.2), 0 2px 4px -1px rgba(0, 0, 0, 0.1);
+    text-decoration: none;
+    font-family: var(--font-mono);
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+    box-shadow: 0 0 15px rgba(0, 240, 255, 0.15);
+}
+
+.btn-primary:hover {
+    background: var(--neon-cyan);
+    color: var(--bg-dark);
+    box-shadow: 0 0 25px rgba(0, 240, 255, 0.6);
+}
+
+/* Tarjetas Glassmorphism */
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+    gap: 1.5rem;
+}
+
+.glass-card {
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    backdrop-filter: blur(10px);
+    border-radius: 16px;
+    padding: 2rem;
     transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+    opacity: 0;
+    transform: translateY(20px);
 }
 
-.tarjeta-genero:hover {
-    border-color: var(--accent-copper);
-    /* Efecto de elevación al pasar el cursor */
-    transform: translateY(-4px);
-    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3), 0 4px 6px -2px rgba(0, 0, 0, 0.15);
+.glass-card.visible {
+    opacity: 1;
+    transform: translateY(0);
 }
 
-.seccion-destacada {
-    background-color: var(--card-surface);
-    padding: 4rem 2rem;
-    border-top: 1px solid #27272a;
-    margin-top: 4rem;
+.glass-card:hover {
+    transform: translateY(-5px);
+    border-color: var(--neon-cyan);
+    box-shadow: 0 10px 30px rgba(0, 240, 255, 0.1);
+}
+
+.card-tag {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    color: var(--neon-cyan);
+    margin-bottom: 0.8rem;
+}
+
+.glass-card h2 {
+    margin-bottom: 0.8rem;
+    font-size: 1.4rem;
+}
+
+.glass-card p {
+    color: var(--text-muted);
+    font-size: 0.95rem;
+    margin-bottom: 1.5rem;
+}
+
+.btn-card {
+    color: var(--neon-cyan);
+    text-decoration: none;
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+}
+
+/* Estilos para imágenes en páginas internas */
+main img {
+    width: 100%;
+    max-width: 650px;
+    display: block;
+    margin: 1.5rem auto;
+    border-radius: 12px;
+    border: 1px solid var(--glass-border);
+    box-shadow: 0 0 25px rgba(0, 240, 255, 0.15);
 }
 
 footer {
     text-align: center;
     padding: 2rem;
+    border-top: 1px solid var(--glass-border);
     color: var(--text-muted);
-    font-size: 0.9rem;
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+}
+
+/* Responsive Móvil */
+@media (max-width: 768px) {
+    .menu-toggle {
+        display: block;
+    }
+    .nav-links {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background: rgba(10, 15, 29, 0.95);
+        padding: 1.5rem;
+        border-bottom: 1px solid var(--glass-border);
+    }
+    .nav-links.active {
+        display: flex;
+    }
 }
