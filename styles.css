@@ -8,18 +8,38 @@ body {
     background-color: #121214;
     color: #f4f4f6;
     font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
-    line-height: 1.6;
+    line-height: 1.7;
 }
 
+/* --- NAVEGACIÓN SUPERIOR (Para páginas internas) --- */
+header {
+    background-color: #1a1a1e;
+    padding: 18px 30px;
+    border-bottom: 1px solid #2a2a30;
+}
+
+header a {
+    color: #818cf8;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.95rem;
+    transition: color 0.2s ease;
+}
+
+header a:hover {
+    color: #a5b4fc;
+}
+
+/* --- PORTADA PRINCIPAL (index.html) --- */
 .encabezado-principal {
     text-align: center;
-    padding: 50px 20px 30px;
+    padding: 55px 20px 35px;
     background: linear-gradient(180deg, #1a1a1e 0%, #121214 100%);
     border-bottom: 1px solid #2a2a30;
 }
 
 .encabezado-principal h1 {
-    font-size: 2.6rem;
+    font-size: 2.8rem;
     letter-spacing: 1px;
     margin-bottom: 8px;
 }
@@ -35,7 +55,6 @@ body {
     padding: 40px 20px;
 }
 
-/* Rejilla de los 3 géneros */
 .grid-generos {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -91,7 +110,6 @@ body {
     font-size: 0.9rem;
 }
 
-/* Sección inferior: El Arte del Sonido */
 .laboratorio-sonoro {
     background-color: #1a1a1e;
     border: 1px solid #2c2c32;
@@ -135,4 +153,78 @@ body {
 
 .caja-audio iframe {
     border-radius: 8px;
+}
+
+/* --- PÁGINAS INTERNAS DE LECTURA Y GALERÍA (clasica.html, electronica.html, jazz.html) --- */
+.contenido-clasica {
+    max-width: 850px;
+    margin: 40px auto;
+    padding: 35px;
+    background-color: #1a1a1e;
+    border: 1px solid #2c2c32;
+    border-radius: 14px;
+}
+
+.contenido-clasica h1 {
+    font-size: 2.4rem;
+    text-align: center;
+    margin-bottom: 25px;
+    color: #ffffff;
+}
+
+.imagen-principal {
+    display: block;
+    width: 100%;
+    max-height: 450px;
+    object-fit: cover;
+    border-radius: 10px;
+    margin: 0 auto 35px auto;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+}
+
+.historia-profunda {
+    margin: 30px 0 40px 0;
+    font-size: 1.05rem;
+    color: #d4d4d8;
+}
+
+.historia-profunda h2 {
+    font-size: 1.6rem;
+    color: #818cf8;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #2c2c32;
+    padding-bottom: 10px;
+}
+
+.historia-profunda p {
+    margin-bottom: 20px;
+    text-align: justify;
+}
+
+.galeria-secundaria {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 25px;
+    margin-top: 30px;
+}
+
+.item-galeria {
+    background-color: #121214;
+    border: 1px solid #2a2a30;
+    border-radius: 10px;
+    padding: 15px;
+}
+
+.item-galeria img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 12px;
+}
+
+.item-galeria p {
+    font-size: 0.92rem;
+    color: #a1a1aa;
+    line-height: 1.5;
 }
