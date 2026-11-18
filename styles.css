@@ -248,3 +248,18 @@ footer {
 .galeria-secundaria img {
     width: 32%;
 }
+/* Estilos para la lectura larga de historia */
+.historia-profunda {
+    margin: 35px 0;
+    line-height: 1.8;
+    font-size: 1.05rem;
+}
+
+.historia-profunda h2 {
+    margin-bottom: 20px;
+    font-size: 1.5rem;
+}
+
+.historia-profunda p {
+    margin-bottom: 18px;
+}
