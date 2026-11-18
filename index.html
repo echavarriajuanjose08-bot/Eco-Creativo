@@ -3,16 +3,221 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Eco Creativo - Exploración Sonora</title>
+    <title>Eco Creativo - Sistema de Audio y Arte v2.0</title>
     <link rel="stylesheet" href="styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        /* Estilos específicos integrados para el Index v2.0 */
+        body {
+            background-color: #121214;
+            color: #f0f0f5;
+            font-family: system-ui, -apple-system, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 40px;
+            background-color: #16161a;
+            border-bottom: 1px solid #2a2a32;
+        }
+
+        .logo {
+            font-weight: bold;
+            font-size: 1.2rem;
+            letter-spacing: 1px;
+            color: #ffffff;
+        }
+
+        .logo span {
+            color: #00e5ff;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 20px;
+        }
+
+        .nav-links a {
+            color: #a0a0b0;
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover, .nav-links a.activo {
+            color: #00e5ff;
+        }
+
+        .hero {
+            text-align: center;
+            padding: 60px 20px 20px;
+        }
+
+        .badge {
+            display: inline-block;
+            font-size: 0.75rem;
+            letter-spacing: 2px;
+            color: #00e5ff;
+            background: rgba(0, 229, 255, 0.1);
+            padding: 6px 14px;
+            border-radius: 20px;
+            border: 1px solid rgba(0, 229, 255, 0.3);
+            margin-bottom: 15px;
+        }
+
+        .hero h1 {
+            font-size: 2.2rem;
+            margin-bottom: 10px;
+        }
+
+        .hero p {
+            color: #9090a0;
+            font-size: 1.05rem;
+        }
+
+        /* Sección de Reproductor v2.0 */
+        .reproductor-v2 {
+            max-width: 900px;
+            margin: 40px auto;
+            padding: 35px;
+            background-color: #16161a;
+            border: 1px solid #2a2a32;
+            border-radius: 16px;
+            box-shadow: 0 12px 35px rgba(0, 0, 0, 0.6);
+        }
+
+        .reproductor-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .reproductor-panel {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 25px;
+            align-items: center;
+        }
+
+        .lista-canales {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .canal-btn {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 15px;
+            background-color: #121214;
+            border: 1px solid #2a2a32;
+            border-radius: 12px;
+            color: #ffffff;
+            text-align: left;
+            cursor: pointer;
+            transition: all 0.25s ease;
+        }
+
+        .canal-btn:hover, .canal-btn.activo {
+            border-color: #00e5ff;
+            background-color: #1c2229;
+            box-shadow: 0 0 15px rgba(0, 229, 255, 0.15);
+        }
+
+        .canal-num {
+            font-weight: bold;
+            color: #00e5ff;
+            font-size: 1.1rem;
+        }
+
+        .canal-info strong {
+            display: block;
+            font-size: 1rem;
+        }
+
+        .canal-info small {
+            color: #9090a0;
+            font-size: 0.85rem;
+        }
+
+        .reproductor-controles {
+            background-color: #121214;
+            border: 1px solid #2a2a32;
+            border-radius: 12px;
+            padding: 25px;
+            text-align: center;
+        }
+
+        .estado-pista {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.85rem;
+            color: #b0b0c0;
+            margin-bottom: 20px;
+            border-bottom: 1px solid #222228;
+            padding-bottom: 10px;
+        }
+
+        .estado-detenido { color: #808090; }
+        .estado-sonando { color: #00e5ff; font-weight: bold; }
+
+        .ecualizador {
+            display: flex;
+            justify-content: center;
+            align-items: flex-end;
+            height: 65px;
+            gap: 6px;
+            margin: 20px 0;
+        }
+
+        .ecualizador span {
+            width: 8px;
+            height: 12px;
+            background-color: #00e5ff;
+            border-radius: 4px;
+            transition: height 0.15s ease;
+        }
+
+        .btn-reproducir {
+            width: 100%;
+            padding: 14px;
+            background-color: #00e5ff;
+            color: #121214;
+            border: none;
+            border-radius: 8px;
+            font-weight: bold;
+            letter-spacing: 1px;
+            cursor: pointer;
+            transition: transform 0.15s, box-shadow 0.2s;
+        }
+
+        .btn-reproducir:hover {
+            box-shadow: 0 0 20px rgba(0, 229, 255, 0.5);
+        }
+
+        @media (max-width: 768px) {
+            .reproductor-panel {
+                grid-template-columns: 1fr;
+            }
+            .navbar {
+                padding: 15px 20px;
+                flex-direction: column;
+                gap: 12px;
+            }
+        }
+    </style>
 </head>
 <body>
+
+    <!-- Barra de Navegación Superior -->
     <header class="navbar">
         <div class="logo">ECO<span>_CREATIVO</span></div>
-        <button class="menu-toggle" id="menu-toggle" aria-label="Abrir menú">☰</button>
-        <nav class="nav-links" id="nav-links">
-            <a href="index.html" class="active">Inicio</a>
+        <nav class="nav-links">
+            <a href="index.html" class="activo">Inicio</a>
             <a href="clasica.html">Clásica</a>
             <a href="eletronica.html">Electrónica</a>
             <a href="jazz.html">Jazz</a>
@@ -20,41 +225,167 @@
     </header>
 
     <main>
+        <!-- Sección Hero -->
         <section class="hero">
             <div class="badge">SISTEMA DE AUDIO Y ARTE // v2.0</div>
-            <h1>El Arte del Sonido en <span class="neon-text">Alta Definición</span></h1>
-            <p>Explora las dimensiones acústicas, digitales e improvisadas de la música a través de una experiencia visual inmersiva.</p>
-            <a href="#generos" class="btn-primary">Explorar Géneros</a>
+            <h1>El Arte del Sonido en Alta Definición</h1>
+            <p>Explora las dimensiones acústicas digitales e improvisadas de la música en una experiencia visual inmersiva.</p>
         </section>
 
-        <section id="generos" class="grid-container">
-            <article class="glass-card visible">
-                <div class="card-tag">01 // ACÚSTICA</div>
-                <h2>Música Clásica</h2>
-                <p>Armonía, complejidad estructural y tradición que trasciende épocas y conmueve el alma.</p>
-                <a href="clasica.html" class="btn-card">Ingresar al módulo →</a>
-            </article>
+        <!-- Tarjeta de Reproductor Interactivo (Los 3 Géneros) -->
+        <section class="reproductor-v2">
+            <div class="reproductor-header">
+                <span class="badge" style="margin-bottom: 5px;">MONITOR DE AUDIO // HD</span>
+                <h2>Selecciona un Canal Sonoro</h2>
+            </div>
 
-            <article class="glass-card visible">
-                <div class="card-tag">02 // SÍNTESIS</div>
-                <h2>Música Electrónica</h2>
-                <p>Paisajes sonoros futuristas, sintetizadores y ondas digitales llenas de energía tecnológica.</p>
-                <a href="eletronica.html" class="btn-card">Ingresar al módulo →</a>
-            </article>
+            <div class="reproductor-panel">
+                <!-- Lista de Canales -->
+                <div class="lista-canales">
+                    <button class="canal-btn activo" onclick="seleccionarCanal('clasica', this)">
+                        <span class="canal-num">01</span>
+                        <div class="canal-info">
+                            <strong>Música Clásica</strong>
+                            <small>Armonía de Cuerdas en Do Mayor</small>
+                        </div>
+                    </button>
 
-            <article class="glass-card visible">
-                <div class="card-tag">03 // IMPROVISACIÓN</div>
-                <h2>Jazz</h2>
-                <p>Atmósfera nocturna, libertad rítmica y la esencia pura de la expresión musical.</p>
-                <a href="jazz.html" class="btn-card">Ingresar al módulo →</a>
-            </article>
+                    <button class="canal-btn" onclick="seleccionarCanal('electronica', this)">
+                        <span class="canal-num">02</span>
+                        <div class="canal-info">
+                            <strong>Música Electrónica</strong>
+                            <small>Pulso Sintético // 128 BPM</small>
+                        </div>
+                    </button>
+
+                    <button class="canal-btn" onclick="seleccionarCanal('jazz', this)">
+                        <span class="canal-num">03</span>
+                        <div class="canal-info">
+                            <strong>Música Jazz</strong>
+                            <small>Acorde Nocturno & Improvisación</small>
+                        </div>
+                    </button>
+                </div>
+
+                <!-- Controles y Visualizador -->
+                <div class="reproductor-controles">
+                    <div class="estado-pista">
+                        <span id="titulo-pista">01 // Música Clásica</span>
+                        <span id="estado-texto" class="estado-detenido">EN ESPERA</span>
+                    </div>
+
+                    <div class="ecualizador" id="ecualizador">
+                        <span></span><span></span><span></span><span></span><span></span>
+                        <span></span><span></span><span></span><span></span><span></span>
+                    </div>
+
+                    <div class="botones-accion">
+                        <button id="btn-play" class="btn-reproducir" onclick="alternarReproduccion()">▶ REPRODUCIR CANAL</button>
+                    </div>
+                </div>
+            </div>
         </section>
     </main>
 
-    <footer>
-        <p>ECO CREATIVO © 2026 // Interfaz de Exploración Musical</p>
-    </footer>
+    <!-- Script del Reproductor de Audio -->
+    <script>
+        const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+        let canalActual = 'clasica';
+        let reproduciendo = false;
+        let intervaloAudio = null;
 
-    <script src="script.js"></script>
+        const pistas = {
+            clasica: {
+                titulo: '01 // Música Clásica',
+                tipo: 'sine',
+                notas: [261.63, 329.63, 392.00, 523.25, 392.00, 329.63],
+                tempo: 450
+            },
+            electronica: {
+                titulo: '02 // Música Electrónica',
+                tipo: 'sawtooth',
+                notas: [130.81, 130.81, 155.56, 196.00, 130.81, 233.08],
+                tempo: 220
+            },
+            jazz: {
+                titulo: '03 // Música Jazz',
+                tipo: 'triangle',
+                notas: [261.63, 329.63, 392.00, 493.88, 587.33, 440.00],
+                tempo: 380
+            }
+        };
+
+        function seleccionarCanal(genero, boton) {
+            canalActual = genero;
+            document.querySelectorAll('.canal-btn').forEach(b => b.classList.remove('activo'));
+            boton.classList.add('activo');
+            document.getElementById('titulo-pista').textContent = pistas[genero].titulo;
+
+            if (reproduciendo) {
+                detenerAudio();
+                iniciarAudio();
+            }
+        }
+
+        function alternarReproduccion() {
+            if (reproduciendo) {
+                detenerAudio();
+            } else {
+                iniciarAudio();
+            }
+        }
+
+        function iniciarAudio() {
+            if (audioCtx.state === 'suspended') audioCtx.resume();
+            reproduciendo = true;
+
+            const btn = document.getElementById('btn-play');
+            const estado = document.getElementById('estado-texto');
+            btn.textContent = '⏹ DETENER CANAL';
+            estado.textContent = 'EN VIVO';
+            estado.className = 'estado-sonando';
+
+            let indice = 0;
+            const config = pistas[canalActual];
+
+            function tocarPaso() {
+                const osc = audioCtx.createOscillator();
+                const gain = audioCtx.createGain();
+                osc.type = config.tipo;
+                osc.frequency.setValueAtTime(config.notas[indice], audioCtx.currentTime);
+
+                gain.gain.setValueAtTime(0.01, audioCtx.currentTime);
+                gain.gain.exponentialRampToValueAtTime(0.18, audioCtx.currentTime + 0.04);
+                gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + (config.tempo / 1000));
+
+                osc.connect(gain);
+                gain.connect(audioCtx.destination);
+                osc.start();
+                osc.stop(audioCtx.currentTime + (config.tempo / 1000));
+
+                animarBarras();
+                indice = (indice + 1) % config.notas.length;
+            }
+
+            tocarPaso();
+            intervaloAudio = setInterval(tocarPaso, config.tempo);
+        }
+
+        function detenerAudio() {
+            reproduciendo = false;
+            clearInterval(intervaloAudio);
+            document.getElementById('btn-play').textContent = '▶ REPRODUCIR CANAL';
+            const estado = document.getElementById('estado-texto');
+            estado.textContent = 'EN ESPERA';
+            estado.className = 'estado-detenido';
+            document.querySelectorAll('.ecualizador span').forEach(b => b.style.height = '12px');
+        }
+
+        function animarBarras() {
+            document.querySelectorAll('.ecualizador span').forEach(barra => {
+                barra.style.height = (Math.floor(Math.random() * 48) + 12) + 'px';
+            });
+        }
+    </script>
 </body>
 </html>
