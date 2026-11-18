@@ -241,3 +241,10 @@ footer {
         display: flex;
     }
 }
+.galeria-secundaria {
+    display: flex;
+    gap: 10px;
+}
+.galeria-secundaria img {
+    width: 32%;
+}
