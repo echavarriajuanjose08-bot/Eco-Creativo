@@ -263,3 +263,141 @@ footer {
 .historia-profunda p {
     margin-bottom: 18px;
 }
+/* Estilos del Reproductor v2.0 */
+.reproductor-v2 {
+    max-width: 1000px;
+    margin: 60px auto;
+    padding: 35px;
+    background-color: #16161a;
+    border: 1px solid #2a2a32;
+    border-radius: 16px;
+    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.6);
+}
+
+.reproductor-header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.badge-audio {
+    display: inline-block;
+    font-size: 0.75rem;
+    letter-spacing: 2px;
+    color: #00e5ff;
+    background: rgba(0, 229, 255, 0.1);
+    padding: 5px 12px;
+    border-radius: 20px;
+    border: 1px solid rgba(0, 229, 255, 0.3);
+    margin-bottom: 10px;
+}
+
+.reproductor-panel {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 25px;
+    align-items: center;
+}
+
+.lista-canales {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.canal-btn {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 15px;
+    background-color: #121214;
+    border: 1px solid #2a2a32;
+    border-radius: 12px;
+    color: #ffffff;
+    text-align: left;
+    cursor: pointer;
+    transition: all 0.25s ease;
+}
+
+.canal-btn:hover, .canal-btn.activo {
+    border-color: #00e5ff;
+    background-color: #1c2229;
+    box-shadow: 0 0 15px rgba(0, 229, 255, 0.15);
+}
+
+.canal-num {
+    font-weight: bold;
+    color: #00e5ff;
+    font-size: 1.1rem;
+}
+
+.canal-info strong {
+    display: block;
+    font-size: 1rem;
+}
+
+.canal-info small {
+    color: #9090a0;
+    font-size: 0.85rem;
+}
+
+.reproductor-controles {
+    background-color: #121214;
+    border: 1px solid #2a2a32;
+    border-radius: 12px;
+    padding: 25px;
+    text-align: center;
+}
+
+.estado-pista {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.85rem;
+    color: #b0b0c0;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #222228;
+    padding-bottom: 10px;
+}
+
+.estado-detenido { color: #808090; }
+.estado-sonando { color: #00e5ff; font-weight: bold; }
+
+.ecualizador {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    height: 65px;
+    gap: 6px;
+    margin: 20px 0;
+}
+
+.ecualizador span {
+    width: 8px;
+    height: 12px;
+    background-color: #00e5ff;
+    border-radius: 4px;
+    transition: height 0.15s ease;
+}
+
+.btn-reproducir {
+    width: 100%;
+    padding: 14px;
+    background-color: #00e5ff;
+    color: #121214;
+    border: none;
+    border-radius: 8px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: transform 0.15s, box-shadow 0.2s;
+}
+
+.btn-reproducir:hover {
+    box-shadow: 0 0 20px rgba(0, 229, 255, 0.5);
+}
+
+@media (max-width: 768px) {
+    .reproductor-panel {
+        grid-template-columns: 1fr;
+    }
+}
